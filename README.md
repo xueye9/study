@@ -76,4 +76,4 @@
 		
 		mModifyFeatures.append( QPair<QgsFeature, QgsGeometry*>(feature, QgsGeometry::fromPolyline(line) ) );
 	  } 
-}
+	}
