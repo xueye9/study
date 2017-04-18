@@ -55,7 +55,8 @@
 	  _linkEndpointToPressPoint(snapResults, layerPressCoordPoint);
 	}
 
-	void QgsMapToolNavigationJunction::_linkEndpointToPressPoint(const QList<QgsSnappingResult>& snapResults, const QgsPoint& layerPressCoordPoint)
+	void QgsMapToolNavigationJunction::_linkEndpointToPressPoint(const QList<QgsSnappingResult>& snapResults, 
+	const QgsPoint& layerPressCoordPoint)
 	{
 	  QList<QgsSnappingResult>::Iterator it = snapResults.begin();
 	  for(; it != snapResults.end(); ++it)
