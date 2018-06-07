@@ -1,0 +1,41 @@
+﻿#pragma once
+
+#include <sys/stat.h>
+#include <memory>
+
+#if defined(__GNUC__)
+ 
+	#define STAT64 struct stat64
+	#define LSTAT64 lstat64
+
+	#define TOUTF8(x) x 
+    #define TOLOCAL(x) x
+			
+#elif defined(_WIN32)
+
+	#define STAT64  struct _stat64
+	#define LSTAT64 _stat64
+
+    #include <string>
+	std::string toutf8(const std::string&);
+    std::string tolocal(const std::string&);
+	#define TOUTF8(x) toutf8(x)
+    #define TOLOCAL(x) tolocal(x)
+	
+#else()
+
+#endif()
+
+#if defined(INSTDTR)
+	#define SHARED_PTR              std::tr1::shared_ptr
+    #define STATIC_POINTER_CAST     std::tr1::static_pointer_cast
+    #define DYNAMIC_POINTER_CAST    std::tr1::dynamic_pointer_cast
+    #define CONST_POINTER_CAST      std::tr1::const_pointer_cast
+    #define MAKE_SHARED             std::tr1::make_shared
+#else()
+	#define SHARED_PTR              std::shared_ptr
+    #define STATIC_POINTER_CAST     std:::static_pointer_cast
+    #define DYNAMIC_POINTER_CAST    std::dynamic_pointer_cast
+    #define CONST_POINTER_CAST      std::const_pointer_cast
+    #define MAKE_SHARED             std::make_shared
+#endif()

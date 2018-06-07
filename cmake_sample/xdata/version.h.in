@@ -1,0 +1,42 @@
+﻿/**********************************************************************
+ *
+ * GEOS - Geometry Engine Open Source
+ * http://geos.osgeo.org
+ *
+ * Copyright (C) 2007 Refractions Research Inc.
+ *
+ * This is free software; you can redistribute and/or modify it under
+ * the terms of the GNU Lesser General Public Licence as published
+ * by the Free Software Foundation. 
+ * See the COPYING file for more information.
+ *
+ **********************************************************************/
+#ifndef JD_X_GISSTORE_CPP_SDK_XDATA_VERSION_H_INCLUDED
+#define JD_X_GISSTORE_CPP_SDK_XDATA_VERSION_H_INCLUDED
+
+#ifndef XDATA_VERSION_MAJOR
+#define XDATA_VERSION_MAJOR @PROJECT_VERSION_MAJOR@
+#endif
+
+#ifndef XDATA_VERSION_MINOR
+#define XDATA_VERSION_MINOR @PROJECT_VERSION_MINOR@
+#endif
+
+#ifndef XDATA_VERSION_PATCH
+#define XDATA_VERSION_PATCH @PROJECT_VERSION_PATCH@
+#endif
+
+#ifndef XDATA_VERSION_DATE
+#define XDATA_VERSION_DATE @PROJECT_VERSION_TWEAK@
+#endif
+
+#ifndef XDATA_VERSION_PROJECT
+#define XDATA_VERSION_PROJECT "@VERSION_PROJECT@"
+#endif
+
+
+#ifndef XDATA_VERSION
+#define XDATA_VERSION "@VERSION@"
+#endif
+
+#endif // JD_X_GISSTORE_CPP_SDK_VERSION_H_INCLUDED

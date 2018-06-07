@@ -1,0 +1,27 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/copy.png</file>
+        <file>images/cut.png</file>
+        <file>images/new.png</file>
+        <file>images/open.png</file>
+        <file>images/paste.png</file>
+        <file>images/save.png</file>
+        <file>images/adddataset.png</file>
+        <file>images/addfile.png</file>
+        <file>images/files/dataset.png</file>
+        <file>images/files/file.png</file>
+        <file>images/upload.png</file>
+        <file>images/delete.png</file>
+        <file>images/settings.png</file>
+        <file>images/tank.png</file>
+        <file>images/download.png</file>
+        <file>images/xclient_64.png</file>
+        <file>images/status_saved.png</file>
+        <file>images/status_upload_failed.png</file>
+        <file>images/status_uploaded.png</file>
+        <file>images/status_no_upload.png</file>
+        <file>images/status_edit.png</file>
+        <file>images/createDB.png</file>
+        <file>images/deleteDB.png</file>
+    </qresource>
+</RCC>

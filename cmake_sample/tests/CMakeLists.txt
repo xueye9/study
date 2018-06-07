@@ -1,0 +1,35 @@
+﻿ cmake_policy(SET CMP0048 NEW)
+PROJECT(tests VERSION 0.0.0.20180605)
+
+FIND_PACKAGE(GoogleTest)
+
+CONFIGURE_FILE(${PROJECT_SOURCE_DIR}/testdata.h.in
+  ${PROJECT_SOURCE_DIR}/testdata.h @ONLY)
+	
+FILE(GLOB_RECURSE HEADER_LIST ./*.h)
+
+AUX_SOURCE_DIRECTORY(. SRC_LIST)
+
+ADD_EXECUTABLE (tests ${HEADER_LIST} ${SRC_LIST} )
+
+INCLUDE_DIRECTORIES(SYSTEM
+	${CURL_INCLUDE_DIR}
+	${XDATA_INCLUDE_DIRS}
+    ${GTEST_INCLUDE_DIRS}
+    ${GTEST_INCLUDE_DIRS}/..
+	"../"
+	"../xdata"
+)
+
+TARGET_LINK_LIBRARIES(tests
+	${CURL_LIBRARIES}
+    ${GTEST_LIBRARIES}
+    xdata
+)
+
+####################################
+# Instal########################################################
+INSTALL(TARGETS tests
+  RUNTIME DESTINATION bin 
+  LIBRARY DESTINATION bin 
+  ARCHIVE DESTINATION lib)

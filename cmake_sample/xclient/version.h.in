@@ -1,0 +1,33 @@
+﻿/**********************************************************************
+ *
+ * xclient - jd.com gisstore data tranform client
+ **********************************************************************/
+#ifndef JD_X_GISSTORE_CPP_SDK_XCLIENT_VERSION_H_INCLUDED
+#define JD_X_GISSTORE_CPP_SDK_XCLIENT_VERSION_H_INCLUDED
+
+#ifndef XCLIENT_VERSION_MAJOR
+#define XCLIENT_VERSION_MAJOR @PROJECT_VERSION_MAJOR@
+#endif
+
+#ifndef XCLIENT_VERSION_MINOR
+#define XCLIENT_VERSION_MINOR @PROJECT_VERSION_MINOR@
+#endif
+
+#ifndef XCLIENT_VERSION_PATCH
+#define XCLIENT_VERSION_PATCH @PROJECT_VERSION_PATCH@
+#endif
+
+#ifndef XCLIENT_VERSION_TWEAK
+#define XCLIENT_VERSION_TWEAK @PROJECT_VERSION_TWEAK@
+#endif
+
+#ifndef XCLIENT_VERSION_PROJECT
+#define XCLIENT_VERSION_PROJECT "@VERSION_PROJECT@"
+#endif
+
+
+#ifndef XCLIENT_VERSION
+#define XCLIENT_VERSION "@VERSION@"
+#endif
+
+#endif // JD_X_GISSTORE_CPP_SDK_XCLIENT_VERSION_H_INCLUDED
