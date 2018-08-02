@@ -8,4 +8,4 @@ publish: clean
 	git push
  
 clean:
-	rm -rf html/*
+	rm -rf wiki/html/*
