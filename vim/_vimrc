@@ -1,0 +1,231 @@
+set nocompatible
+"let &shellslash=0
+"set shell=git
+"set shell=bash
+source $VIMRUNTIME/vimrc_example.vim
+source $VIMRUNTIME/mswin.vim
+behave mswin
+
+
+"set diffexpr=MyDiff()
+"function MyDiff()
+  "let opt = '-a --binary '
+  "if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+  "if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+  "let arg1 = v:fname_in
+  "if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+  "let arg2 = v:fname_new
+  "if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+  "let arg3 = v:fname_out
+  "if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+  "let eq = ''
+  "if $VIMRUNTIME =~ ' '
+    "if &sh =~ '\<cmd'
+      "let cmd = '""' . $VIMRUNTIME . '\diff"'
+      "let eq = '"'
+    "else
+      "let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+    "endif
+  "else
+    "let cmd = $VIMRUNTIME . '\diff'
+  "endif
+  "silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+"endfunction
+
+" XUEBING 2011-6-5
+"ÓëWindows¹²Ïí¼ôÌù°å
+set clipboard+=unnamed
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+" ÎÄ¼şÉèÖÃ 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+" ²»Òª±¸·İÎÄ¼ş,²»Éú³ÉÁÙÊ±ÎÄ¼ş 
+set nobackup 
+set noswapfile
+"set noundofile
+set undodir=D:/temp/vim
+
+"Í»³öÏÖÊµµ±Ç°ĞĞÁĞ
+set cursorline
+set cursorcolumn
+
+"ÉèÖÃÆ¥ÅäÄ£Ê½ ÀàËÆµ±ÊäÈëÒ»¸ö×óÀ¨ºÅÊ±»áÆ¥ÅäÏàÓ¦µÄÄÇ¸öÓÒÀ¨ºÅ
+set showmatch
+
+" Í³Ò»Ëõ½øÎª2 
+set shiftwidth=4
+set softtabstop=4
+set number
+
+" tabÎª4¿Õ¸ñ,tab Ìæ»»Îª¿Õ¸ñ
+set tabstop=4
+set expandtab
+
+" ÏÔÊ¾Ë®Æ½¹¤¾ßÌõ
+set guioptions+=b
+set guioptions-=t
+set guioptions-=r
+set guioptions+=l
+
+" ²»ÒªÕÛĞĞ
+set nowrap
+set cindent shiftwidth=4
+"colorscheme vs2005
+"colorscheme desert
+syntax enable
+set background=dark
+colorscheme solarized 
+"ÉèÖÃ±à³Ì×ÖÌå
+"set guifont=Consolas:h14
+set guifont=Source_Code_Pro:h14
+
+" ¹ö¶¯Ìõ
+set scrolloff=10
+
+set nowrap
+
+" ×Ô¼º¶¨ÒåµÄ¼üÅÌÓ³Éä°´ÏÂF5½¨Ö´ĞĞÂ¼ÖÆºÃµÄÃû×ÖÎªaµÄºê
+map <F5> @a
+" vimwiki ¿ì½İ¼ü
+map <S-F4> :VimwikiAll2HTML<cr>
+map <F4> :Vimwiki2HTML<cr>
+
+
+" Í¨¹ıÊ¹ÓÃ: commandsÃüÁî£¬¸æËßÎÒÃÇÎÄ¼şµÄÄÄÒ»ĞĞ±»¸Ä±ä¹ı 
+set report=0 
+
+" ÔÚ±»·Ö¸îµÄ´°¿Ú¼äÏÔÊ¾¿Õ°×£¬±ãÓÚÔÄ¶Á 
+set fillchars=vert:\ ,stl:\ ,stlnc:\ 
+
+" ÎÒµÄ×´Ì¬ĞĞÏÔÊ¾µÄÄÚÈİ£¨°üÀ¨ÎÄ¼şÀàĞÍºÍ½âÂë£© 
+set statusline=%F%m%r%h%w\[POS=%l,%v][%p%%]\%{strftime(\"%d/%m/%y\ -\ %H:%M\")} 
+
+" ÖĞÎÄÂÒÂë
+set enc=utf-8
+set fencs =utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
+"set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+"set termencoding=utf-8
+"set fileformats=unix
+"set encoding=prc
+
+" ÓïÑÔÉèÖÃ
+set langmenu=zh_CN.UTF-8
+language message zh_CN.UTF-8
+set helplang=cn
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
+
+" ËÑË÷ºöÂÔ´óĞ¡Ğ´
+set ignorecase
+
+" ËÑË÷Öğ×Ö¸ßÁÁ
+set incsearch
+
+" ±à¼­vimrcÖ®ºó×Ô¶¯¼ÓÔØ
+autocmd! bufwritepost _vimrc source $VIM/_vimrc
+
+filetype off
+
+" ´Ë´¦¹ævundleµÄÂ·¾¶
+" UNIX call vundle#rc("~/a/nother/path"). 
+" Windows call vundle#rc("/placeholder/path").
+set rtp+=$VIM/vimfiles/bundle/Vundle.vim
+
+" ´Ë´¦¹æ¶¨²å¼ş°²×°Â·¾¶
+"call vundle#begin("$VIM/vimfiles/bundle/")
+"ÔÚwindowsÏÂ²»ÒªÉèÖÃ shell
+call vundle#begin('$VIM/vimfiles/plugin/')
+
+"Plugin 'VundleVim/Vundle.vim'
+
+" My Bundles here:  /* ²å¼şÅäÖÃ¸ñÊ½ */
+"   
+" original repos on github £¨GithubÍøÕ¾ÉÏ·Çvim-scripts²Ö¿âµÄ²å¼ş£¬°´ÏÂÃæ¸ñÊ½ÌîĞ´£©
+Plugin 'vimwiki/vimwiki'
+" vim-scripts repos  £¨vim-scripts²Ö¿âÀïµÄ£¬°´ÏÂÃæ¸ñÊ½ÌîĞ´£©
+Bundle 'L9'
+"Bundle 'FuzzyFinder'
+" non github repos   (·ÇÉÏÃæÁ½ÖÖÇé¿öµÄ£¬°´ÏÂÃæ¸ñÊ½ÌîĞ´)
+"Bundle 'git://git.wincent.com/command-t.git'
+" ... 
+call vundle#end() 
+filetype plugin indent on
+
+au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=markdown
+let g:vim_markdown_folding_disabled=1
+
+"let g:vim_markdown_frontmatter=1
+
+" ÏÔÊ¾±ê³ß
+map ,ch :call SetColorColumn()<CR>
+function! SetColorColumn()
+    let col_num = virtcol(".")
+    let cc_list = split(&cc, ',')
+    if count(cc_list, string(col_num)) <= 0
+        execute "set cc+=".col_num
+    else
+        execute "set cc-=".col_num
+    endif
+endfunction
+
+
+let g:indent_guides_start_level = 2  
+let indent_guides_guide_size = 1
+let g:indent_guides_space_guides = 1
+let g:indent_guides_enable_on_vim_startup = 1 
+
+let mapleader = "\\" 
+
+" ²åÈëÄ£Ê½ F9 ¹Ø±Õ×Ô¶¯Ëõ½ø 
+set pastetoggle=<F9>
+
+" 0 - ²»¼ÇÂ¼ÉÏ´ÎµÄ²¹È«·½Ê½
+" 1 - ¼Ç×¡ÉÏ´ÎµÄ²¹È«·½Ê½,Ö±µ½ÓÃÆäËûµÄ²¹È«ÃüÁî¸Ä±äËü
+" 2 - ¼Ç×¡ÉÏ´ÎµÄ²¹È«·½Ê½,Ö±µ½°´ESCÍË³ö²åÈëÄ£Ê½ÎªÖ¹
+let g:SuperTabRetainCompletionType=2
+
+" ÉèÖÃ°´ÏÂ<Tab>ºóÄ¬ÈÏµÄ²¹È«·½Ê½, Ä¬ÈÏÊÇ<C-P>, 
+" ÏÖÔÚ¸ÄÎª<C-X><C-O>. ¹ØÓÚ<C-P>µÄ²¹È«·½Ê½, 
+" »¹ÓĞÆäËûµÄ²¹È«·½Ê½, Äã¿ÉÒÔ¿´¿´ÏÂÃæµÄÒ»Ğ©°ïÖú:
+" :help ins-completion
+" :help compl-omni
+let g:SuperTabDefaultCompletionType="<C-X><C-O>"
+
+let Tlist_Show_One_File=1
+let Tlist_Exit_OnlyWindow=1
+
+" ×Ô¶¨Òåºê
+let @b = "^df:dwdw$x1gg^vf/f/f/y^hp==j"
+let @c = "dfBdfB1ggvf/f/f/f/f/f/y^hp$a1ggf?v$y$p==j"
+
+
+autocmd GUIEnter * simalt ~x
+
+" vimwiki
+let wiki_1={}
+let wiki_1.path = 'D:/vimwiki_work/'
+let wiki_1.syntax='markdown'
+let wiki_1.ext='.wiki'
+let wiki_1.path_html='D:/vimwiki_work/html/'
+"let wiki_1.html_header='D:/vimwiki_template/header.htm'
+"let wiki_1.html_footer='D:/vimwiki_template/footer.htm'
+"let wiki_1.diary_link_count=5
+
+let wiki_2={}
+let wiki_2.path = 'D:/workspace/study/wiki/'
+"let wiki_2.syntax='markdown'
+"let wiki_2.ext='.md'
+let wiki_2.path_html='D:/workspace/study/wiki/html'
+"let wiki_2.html_header='D:/vimwiki_template/header.htm'
+"let wiki_2.html_footer='D:/vimwiki_template/footer.htm'
+"let wiki_2.diary_link_count=5
+"let wiki_2.css_file='D:/style.css'
+"let wiki_2.custom_wiki2html='D:/misaka_md2html.py'
+
+let g:vimwiki_use_mouse = 1
+let g:vimwiki_list = [wiki_1,wiki_2]
+let g:vimwiki_ext2syntax={'.md':'markdown','.markdown':'markdown','.mdown':'markdown'}
+
+" ±ê¼ÇÎªÍê³ÉµÄ checklist ÏîÄ¿»áÓĞÌØ±ğµÄÑÕÉ«
+let g:vimwiki_hl_cb_checked = 1
+"let wiki.nested_syntaxes = {'ruby': 'ruby', 'python': 'python', 'c++': 'cpp', 'sh': 'sh', 'racket': 'racket'}
+
