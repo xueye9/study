@@ -6,7 +6,6 @@ source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
-
 "set diffexpr=MyDiff()
 "function MyDiff()
   "let opt = '-a --binary '
@@ -71,7 +70,7 @@ set nowrap
 set cindent shiftwidth=4
 "colorscheme vs2005
 "colorscheme desert
-syntax enable
+syntax on
 set background=dark
 colorscheme solarized 
 "ÉèÖÃ±à³Ì×ÖÌå
@@ -123,37 +122,18 @@ set incsearch
 " ±à¼­vimrcÖ®ºó×Ô¶¯¼ÓÔØ
 autocmd! bufwritepost _vimrc source $VIM/_vimrc
 
-filetype off
-
-" ´Ë´¦¹ævundleµÄÂ·¾¶
-" UNIX call vundle#rc("~/a/nother/path"). 
-" Windows call vundle#rc("/placeholder/path").
-set rtp+=$VIM/vimfiles/bundle/Vundle.vim
-
-" ´Ë´¦¹æ¶¨²å¼ş°²×°Â·¾¶
-"call vundle#begin("$VIM/vimfiles/bundle/")
-"ÔÚwindowsÏÂ²»ÒªÉèÖÃ shell
-call vundle#begin('$VIM/vimfiles/plugin/')
-
-"Plugin 'VundleVim/Vundle.vim'
-
-" My Bundles here:  /* ²å¼şÅäÖÃ¸ñÊ½ */
-"   
-" original repos on github £¨GithubÍøÕ¾ÉÏ·Çvim-scripts²Ö¿âµÄ²å¼ş£¬°´ÏÂÃæ¸ñÊ½ÌîĞ´£©
-Plugin 'vimwiki/vimwiki'
-" vim-scripts repos  £¨vim-scripts²Ö¿âÀïµÄ£¬°´ÏÂÃæ¸ñÊ½ÌîĞ´£©
-Bundle 'L9'
-"Bundle 'FuzzyFinder'
-" non github repos   (·ÇÉÏÃæÁ½ÖÖÇé¿öµÄ£¬°´ÏÂÃæ¸ñÊ½ÌîĞ´)
-"Bundle 'git://git.wincent.com/command-t.git'
-" ... 
-call vundle#end() 
+" indent ´ò¿ªÎÄ¼ş¶ÔÓ¦µÄ²å¼şºÍËõ½ø
+" on ¼ì²éÎÄ¼şÀàĞÍ
 filetype plugin indent on
 
-au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=markdown
-let g:vim_markdown_folding_disabled=1
+call plug#begin('$VIM/vimfiles/plugin')
+"Plug 'vimwiki/vimwiki'
+Plug 'itchyny/calendar.vim'
+call plug#end()
 
-"let g:vim_markdown_frontmatter=1
+au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=markdown
+let g:vim_markdown_folding_disabled=1 
+let g:vim_markdown_frontmatter=1
 
 " ÏÔÊ¾±ê³ß
 map ,ch :call SetColorColumn()<CR>
@@ -197,7 +177,6 @@ let Tlist_Exit_OnlyWindow=1
 let @b = "^df:dwdw$x1gg^vf/f/f/y^hp==j"
 let @c = "dfBdfB1ggvf/f/f/f/f/f/y^hp$a1ggf?v$y$p==j"
 
-
 autocmd GUIEnter * simalt ~x
 
 " vimwiki
@@ -211,13 +190,16 @@ let wiki_1.path_html='D:/vimwiki_work/html/'
 "let wiki_1.diary_link_count=5
 
 let wiki_2={}
+"let wiki_2.index = 'personal'
 let wiki_2.path = 'D:/workspace/study/wiki/'
 "let wiki_2.syntax='markdown'
 "let wiki_2.ext='.md'
-let wiki_2.path_html='D:/workspace/study/wiki/html'
+"let wiki_2.path_html='D:/workspace/study/wiki/html'
+let wiki_2.nested_syntaxes={'python': 'python','c++': 'cpp','winbatch': 'winbatch'}
 "let wiki_2.html_header='D:/vimwiki_template/header.htm'
 "let wiki_2.html_footer='D:/vimwiki_template/footer.htm'
-"let wiki_2.diary_link_count=5
+let wiki_2.diary_link_count=5
+let wiki_2.diary_rel_path='diary/'
 "let wiki_2.css_file='D:/style.css'
 "let wiki_2.custom_wiki2html='D:/misaka_md2html.py'
 

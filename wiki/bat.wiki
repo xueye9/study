@@ -2,6 +2,7 @@
 
 == 计时器 ==
 
+=== 今天 ===
 [[https://tieba.baidu.com/p/4486501975?red_tag=3007386312|链接描述]]
 
 [[D:/workspace/study/计时脚本.bat|链接描述]]
@@ -17,3 +18,29 @@ _斜体_:斜体
 上标^脚本^:上标脚本
 
 下表,,脚本,,:下标脚本
+
+{{{class="brush: python"
+ def hello(world):
+     for x in range(10):
+         print("Hello {0} number {1}".format(world, x))
+}}}
+
+{{{class="brush:winbatch"
+    @echo start at: [%date%][%time%] 
+    @set local_file="D:\cmake-3.12.0.tar.gz" 
+    @echo pushing file ...
+    @curl -i -H "Content-Type: application/octet-stream" -X PUT -T %local_file% "http://192.168.178.55:14000/webhdfs/v1/zhangyu85/cmake-3.12.0.tar.gz?op=CREATE&data=true&recursive=true&user.name=spark" 
+    @echo off 
+    ::ﾃｿ5ｷﾖﾖﾓｸｴﾖﾆﾒﾔﾏﾂﾊﾗﾒｳ
+    for /f %%i in ('dir /b %local_file%') do (
+     echo %%~zi bytes
+    )
+    ::if %indexdx% gtr 5120 (
+    ::echo y | xcopy c:\index2.htm /d /r /k c:\index.htm
+    ::) 
+    @echo end at: [%date%][%time%]
+    @pause
+}}}
+
+%toc
+%title Title of the page 
