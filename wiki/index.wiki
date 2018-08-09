@@ -2,6 +2,7 @@
 
 [[bat]]
 
+[[qgis]]
   {{local:./images/vimwiki_logo.png|cool stuff|style="width:150px; height: 120px;"}}
 
 {{https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1533287352&di=206d7966663fc5f451a9f9c19f574593&src=http://www.berlinix.com/images/vimwiki-mockups.png|cool stuff|style="width:300px; height: 240px;"}}
