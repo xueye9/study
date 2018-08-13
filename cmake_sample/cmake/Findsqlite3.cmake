@@ -32,7 +32,7 @@ else(SQLITE3_INCLUDE_DIRS AND SQLITE3_LIBRARIES)
     else(SQLITE3_PREFIX)
         find_path(_SQLITE3_INCLUDE_DIR sqlite3.h
             PATH_SUFFIXES "include")
-        find_library(_SQLITE3_LIBRARY sqlite_i sqlite3)
+        find_library(_SQLITE3_LIBRARY sqlite3_i sqlite3)
     endif(SQLITE3_PREFIX)
     if(_SQLITE3_INCLUDE_DIR AND _SQLITE3_LIBRARY)
         set(SQLITE3_FOUND true)

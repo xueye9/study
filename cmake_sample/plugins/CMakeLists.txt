@@ -3,8 +3,22 @@ IF (CMAKE_CXX_COMPILER_ID MATCHES "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang"
   SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=hidden -fvisibility-inlines-hidden")
 ENDIF()
 
-# override default path where built files are put to allow running qgis without installing
-ADD_SUBDIRECTORY(txtplugin)
+option( BUILD_PLUGIN_IMG "Build img img" ON)
+IF(BUILD_PLUGIN_IMG)
 ADD_SUBDIRECTORY(imageplugin)
+ENDIF(BUILD_PLUGIN_IMG)
+
+option( BUILD_PLUGIN_BAG "Build Plugin bag" ON)
+IF(BUILD_PLUGIN_BAG )
 ADD_SUBDIRECTORY(bagplugin)
+ENDIF(BUILD_PLUGIN_BAG)
+
+option( BUILD_PLUGIN_TXT "Build Plugin txt" OFF)
+IF(BUILD_PLUGIN_TXT)
+ADD_SUBDIRECTORY(txtplugin)
+ENDIF(BUILD_PLUGIN_TXT)
+
+option( BUILD_PLUGIN_PCAP "Build Plugin pcap" OFF)
+IF(BUILD_PLUGIN_PCAP)
 ADD_SUBDIRECTORY(pcapplugin)
+ENDIF(BUILD_PLUGIN_PCAP )

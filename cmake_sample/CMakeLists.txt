@@ -41,16 +41,6 @@ ENDIF(MSVC)
 #使用系统环境变量
 #MESSAGE(STATUS "env: $ENV{OSGEO4W_ROOT}")
 
-option(BUILD_xclient "Build xclient" OFF)
-IF(NOT BUILD_xclient)
-    SET(BUILD_XCLIENT EXCLUDE_FROM_ALL)
-ENDIF(NOT BUILD_xclient)
-
-option(BUILD_tests "Build tests" OFF)
-IF(NOT BUILD_tests)
-    SET(BUILD_TESTS EXCLUDE_FROM_ALL)
-ENDIF(NOT BUILD_tests)
-
 ###########################################################
 #指定所有生成对象的输出目录    
 #${CMAKE_BINARY_DIR} 生成目录的根目录
@@ -75,8 +65,17 @@ SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY_MINSIZEREL ${CMAKE_BINARY_DIR}/MinSizeRel)
 ADD_SUBDIRECTORY(xdata)
 #ADD_SUBDIRECTORY(xthread)
 ADD_SUBDIRECTORY(xplugin)
-ADD_SUBDIRECTORY(tests ${BUILD_TESTS})
 ADD_SUBDIRECTORY(plugins)
-ADD_SUBDIRECTORY(xclient ${BUILD_XCLIENT})
+
+option(BUILD_TESTS "Build tests" OFF)
+IF(BUILD_TESTS)
+ADD_SUBDIRECTORY(tests)
+ENDIF(BUILD_TESTS)
+
+
+option(BUILD_XCLIENT "Build xclient" OFF)
+IF(BUILD_XCLIENT)
+ADD_SUBDIRECTORY(xclient)
+ENDIF(BUILD_XCLIENT)
 
 
