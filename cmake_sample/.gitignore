@@ -1,0 +1,46 @@
+# eclipse ignore
+.settings/
+.project
+.classpath
+
+# idea ignore
+.idea/
+*.ipr
+*.iml
+*.iws
+target/
+
+# temp ignore
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
+
+# system ignore
+.DS_Store
+
+# package ignore (optional)
+# *.jar
+# *.war
+# *.zip
+# *.tar
+# *.tar.gz
+# Java class files
+*.class
+
+#vsstudio ignore
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.db
+*.dll
+*.exp
+*.ilk
+*.pdb
+
+#cmake auto generate files
+/xdata/platform.h
+/xdata/version.h
+/xclient/version.h
+
