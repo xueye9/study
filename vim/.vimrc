@@ -25,7 +25,8 @@ set softtabstop=4
 set tabstop=4
 set expandtab
 
-set number " 显示行号
+"set number " 显示行号
+set relativenumber " 显示相对行号
 
 " 搜索
 set ignorecase  " 忽略大小写
@@ -238,5 +239,6 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'w0rp/ale'
+Plug 'vim-scripts/NSIS-syntax-highlighting'
 call plug#end()
 
