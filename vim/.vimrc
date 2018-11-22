@@ -52,6 +52,7 @@ set fillchars=vert:\ ,stl:\ ,stlnc:\
 
 " 中文乱码
 set enc=utf-8
+" set fencs =utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
 set fencs =ucs-bom,utf-8,shift-jis,gb18030,gbk,gb2312,cp936,latin1
 
 " 语言设置
@@ -217,6 +218,23 @@ let g:ycm_semantic_triggers =  {
             \   'erlang' : [':'],
             \ } 
 
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+"let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsExpandTrigger="<C-J>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+" Vim-easy-Align 快速对齐插件
+xmap <leader>a <Plug>(EasyAlign)
+nmap <leader>a <Plug>(EasyAlign)
+
+" indentline 
+nnoremap <leader>il :IndentLinesToggle<CR> " 开关匹配线
+" let g:indentLine_char = '¦'
+"let g:indentLine_char = '┆'
 
 " ===== vim-plug 插件管理 ============================
 let $PLUG_DIR = expand("~/.vim/autoload") 
@@ -239,5 +257,9 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'w0rp/ale'
 Plug 'vim-scripts/NSIS-syntax-highlighting'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'junegunn/vim-easy-align'
+Plug 'Yggdroot/indentLine'
 call plug#end()
 
