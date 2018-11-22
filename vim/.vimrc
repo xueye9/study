@@ -25,7 +25,7 @@ set softtabstop=4
 set tabstop=4
 set expandtab
 
-"set number " 显示行号
+set number " 显示行号
 set relativenumber " 显示相对行号
 
 " 搜索
@@ -52,7 +52,7 @@ set fillchars=vert:\ ,stl:\ ,stlnc:\
 
 " 中文乱码
 set enc=utf-8
-set fencs =utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
+set fencs =ucs-bom,utf-8,shift-jis,gb18030,gbk,gb2312,cp936,latin1
 
 " 语言设置
 set langmenu=zh_CN.UTF-8
@@ -84,10 +84,9 @@ endif
 set pastetoggle=<F9>
 
 "自动补齐{ [ ( <
-inoremap { {<cr>}<esc>O 
+inoremap { {}<esc>i 
 inoremap ( ()<esc>i
 inoremap [ []<esc>i
-inoremap < <><esc>i
 inoremap ' ''<esc>i
 inoremap " ""<esc>i
 
