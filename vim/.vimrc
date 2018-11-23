@@ -189,8 +189,8 @@ let g:ycm_min_num_of_chars_for_completion=1 " 从第1个键入字符就开始罗
 let g:ycm_complete_in_comments = 1 " 在注释输入中也能补全
 let g:ycm_complete_in_strings = 1 " 在字符串输入中也能补全
 let g:ycm_collect_identifiers_from_comments_and_strings = 1 " 注释和字符串中的文字也会被收入补全
-let g:ycm_key_list_select_completion = ['<TAB>', '<Down>'] " 弹出列表时选择第1项的快捷键(默认为<TAB>和<Down>)
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>'] " 弹出列表时选择前1项的快捷键(默认为<S-TAB>和<UP>)
+let g:ycm_key_list_select_completion = ['=', '<Down>'] " 弹出列表时选择第1项的快捷键(默认为<TAB>和<Down>)
+let g:ycm_key_list_previous_completion = ['-', '<Up>'] " 弹出列表时选择前1项的快捷键(默认为<S-TAB>和<UP>)
 " 主动补全, 默认为<C-Space>
 "let g:ycm_key_invoke_completion = '<C-Space>'
 " 停止显示补全列表(防止列表影响视野), 可以按<C-Space>重新弹出
@@ -220,7 +220,7 @@ let g:ycm_semantic_triggers =  {
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 "let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsExpandTrigger="<C-J>"
+let g:UltiSnipsExpandTrigger="<TAB>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
