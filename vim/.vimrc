@@ -236,6 +236,12 @@ nnoremap <leader>il :IndentLinesToggle<CR> " 开关匹配线
 " let g:indentLine_char = '¦'
 "let g:indentLine_char = '┆'
 
+" 彩虹括号
+let g:rainbow_active = 1 
+
+" unite
+map <leader>u :Unite file_rec buffer file_mru<CR>
+
 " ===== vim-plug 插件管理 ============================
 let $PLUG_DIR = expand("~/.vim/autoload") 
 if has("win32") || has ("win64")
@@ -261,4 +267,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-easy-align'
 Plug 'Yggdroot/indentLine'
+Plug 'luochen1990/rainbow'
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/neomru.vim'
 call plug#end()
