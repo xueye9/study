@@ -45,7 +45,11 @@ syntax on
 set background=dark 
 colorscheme solarized 
 
-set guifont=Source_Code_Pro_for_Powerline:h14 "设置编程字体
+"set guifont=Source\ Code\ Pro\ for\ Powerline:h14 "设置编程字体
+set guifont=Hack\ 14
+"set guifont=SauceCodePro\ Nerd:h14
+"set guifont=DejaVu\ Sans\ Mono\ Oblique\ 14
+
 
 " 在被分割的窗口间显示空白，便于阅读 
 set fillchars=vert:\ ,stl:\ ,stlnc:\ 
@@ -56,9 +60,9 @@ set enc=utf-8
 set fencs =ucs-bom,utf-8,shift-jis,gb18030,gbk,gb2312,cp936,latin1
 
 " 语言设置
-set langmenu=zh_CN.UTF-8
-language message zh_CN.UTF-8
-set helplang=cn
+"set langmenu=us_EN.UTF-8
+"language message us_EN.UTF-8
+set helplang=en
 "source $VIMRUNTIME/delmenu.vim
 "source $VIMRUNTIME/menu.vim
 
@@ -170,8 +174,10 @@ let g:airline#extensions#tabline#buffer_nr_show = 1     " tabline中buffer显示
 
 "ycm 配置
 set pumheight=10 "弹出菜单的高度，自己定义"
-"let g:ycm_server_python_interpreter='python' "使用python3
-"let g:ycm_python_binary_path = 'C:\OSGeo4W64\apps\Python37'
+if ( has("unix") )
+    let g:ycm_server_python_interpreter='python3' "使用python3
+    let g:ycm_python_binary_path = '/usr/bin/python3'
+endif
 let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py' " 当前目录没有 .ycm_extra_conf.py 时使用这个配置文件
 let g:ycm_confirm_extra_conf = 0 " 停止提示是否载入本地ycm_extra_conf文件 
 " 0 - 不记录上次的补全方式
