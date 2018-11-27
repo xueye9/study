@@ -17,13 +17,11 @@ set cursorcolumn
 
 set showmatch "设置匹配模式 类似当输入一个左括号时会匹配相应的那个右括号
 
-" 统一缩进为4 
-set shiftwidth=4
-set softtabstop=4
-
-" tab为4空格,tab 替换为空格
-set tabstop=4
-set expandtab
+set shiftwidth=4 " 设置自动缩进为4个字符
+set softtabstop=4 
+set tabstop=4 " 设定tab宽度为4
+set expandtab " 用 space 替换tab
+"set noexpandtab " 不用用 space 替换tab
 
 set number " 显示行号
 set relativenumber " 显示相对行号
@@ -45,7 +43,13 @@ syntax on
 set background=dark 
 colorscheme solarized 
 
-set guifont=Source_Code_Pro_for_Powerline:h14 "设置编程字体
+if has("win32") || has ("win64")
+    set guifont=Source_Code_Pro_for_Powerline:h14 "设置编程字体
+    "set guifont=SauceCodePro_Nerd_Font:h14 "设置编程字体
+else
+    "set guifont=DejaVu\ Mono\ Oblique\ 14 "设置编程字体
+    set guifont=Source\ Code\ Pro\ for\ Powerline\ 14 "设置编程字体
+endif
 
 " 在被分割的窗口间显示空白，便于阅读 
 set fillchars=vert:\ ,stl:\ ,stlnc:\ 
@@ -53,14 +57,22 @@ set fillchars=vert:\ ,stl:\ ,stlnc:\
 " 中文乱码
 set enc=utf-8
 " set fencs =utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
-set fencs =ucs-bom,utf-8,shift-jis,gb18030,gbk,gb2312,cp936,latin1
+set fencs =ucs-bom,utf-8,chinese,shift-jis,gb18030,gbk,gb2312,cp936,latin1
+"if has("win32") || has ("win64")
+    "set fenc=""
+    "set fenc=chinese
+"else
+    "set fenc=""
+    "set fenc=utf-8
+"endif
 
 " 语言设置
-set langmenu=zh_CN.UTF-8
-language message zh_CN.UTF-8
+"set langmenu=zh_CN.UTF-8
 set helplang=cn
-"source $VIMRUNTIME/delmenu.vim
-"source $VIMRUNTIME/menu.vim
+
+source $VIMRUNTIME/delmenu.vim " 解决菜单乱码
+source $VIMRUNTIME/menu.vim    " 解决菜单乱码
+language messages  zh_CN.UTF-8 " 解决console信息乱码
 
 " indent 打开文件对应的插件和缩进
 " on 检查文件类型
@@ -240,7 +252,7 @@ nnoremap <leader>il :IndentLinesToggle<CR> " 开关匹配线
 let g:rainbow_active = 1 
 
 " unite
-map <leader>u :Unite file_rec buffer file_mru<CR>
+map <leader>u :Unite buffer file_rec -input=
 
 " ===== vim-plug 插件管理 ============================
 let $PLUG_DIR = expand("~/.vim/autoload") 
