@@ -34,6 +34,8 @@ set incsearch   " 逐字高亮
 set nowrap
 set cindent shiftwidth=4 " c语言的缩进
 
+set foldmethod=indent
+
 " 编辑vimrc之后自动加载
 autocmd! bufwritepost ~/.vimrc source ~/.vimrc
 
@@ -182,11 +184,15 @@ map <F3> :NERDTreeToggle<CR>
 
 " airline
 set laststatus=2 
-let g:airline_powerline_fonts = 1                       " 使用powerline打过补丁的字体
-let g:airline#extensions#tabline#enabled = 1            " 开启tabline
-let g:airline#extensions#tabline#left_sep = '*'         " tabline中当前buffer两端的分隔字符
-let g:airline#extensions#tabline#left_alt_sep = '|'     " tabline中未激活buffer两端的分隔字符
-let g:airline#extensions#tabline#buffer_nr_show = 1     " tabline中buffer显示编号
+let g:airline_powerline_fonts                   = 1   " 使用powerline打过补丁的字体
+let g:airline#extensions#tabline#enabled        = 1   " 开启tabline
+"let g:airline#extensions#tabline#left_sep       = '>' " tabline中当前buffer两端的分隔字符
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline#extensions#tabline#buffer_nr_show = 1   " tabline中buffer显示编号
+let g:airline_detect_modified                   = 1   " modifie
 
 "ycm 配置
 set pumheight=10 "弹出菜单的高度，自己定义"
@@ -292,4 +298,5 @@ Plug 'Yggdroot/indentLine'
 Plug 'luochen1990/rainbow'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/neomru.vim'
+Plug 'peterhoeg/vim-qml'
 call plug#end()
