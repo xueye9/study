@@ -17,13 +17,11 @@ set cursorcolumn
 
 set showmatch "设置匹配模式 类似当输入一个左括号时会匹配相应的那个右括号
 
-" 统一缩进为4 
-set shiftwidth=4
-set softtabstop=4
-
-" tab为4空格,tab 替换为空格
-set tabstop=4
-set expandtab
+set shiftwidth=4 " 设置自动缩进为4个字符
+set softtabstop=4 
+set tabstop=4 " 设定tab宽度为4
+set expandtab " 用 space 替换tab
+"set noexpandtab " 不用用 space 替换tab
 
 set number " 显示行号
 set relativenumber " 显示相对行号
@@ -36,6 +34,8 @@ set incsearch   " 逐字高亮
 set nowrap
 set cindent shiftwidth=4 " c语言的缩进
 
+set foldmethod=indent
+
 " 编辑vimrc之后自动加载
 autocmd! bufwritepost ~/.vimrc source ~/.vimrc
 
@@ -45,7 +45,13 @@ syntax on
 set background=dark 
 colorscheme solarized 
 
-set guifont=Source_Code_Pro_for_Powerline:h14 "设置编程字体
+if has("win32") || has ("win64")
+    set guifont=Source_Code_Pro_for_Powerline:h14 "设置编程字体
+    "set guifont=SauceCodePro_Nerd_Font:h14 "设置编程字体
+else
+    "set guifont=DejaVu\ Mono\ Oblique\ 14 "设置编程字体
+    set guifont=Source\ Code\ Pro\ for\ Powerline\ 14 "设置编程字体
+endif
 
 " 在被分割的窗口间显示空白，便于阅读 
 set fillchars=vert:\ ,stl:\ ,stlnc:\ 
@@ -53,14 +59,30 @@ set fillchars=vert:\ ,stl:\ ,stlnc:\
 " 中文乱码
 set enc=utf-8
 " set fencs =utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
-set fencs =ucs-bom,utf-8,shift-jis,gb18030,gbk,gb2312,cp936,latin1
+set fencs =ucs-bom,utf-8,chinese,shift-jis,gb18030,gbk,gb2312,cp936,latin1
+"if has("win32") || has ("win64")
+    "set fenc=""
+    "set fenc=chinese
+"else
+    "set fenc=""
+    "set fenc=utf-8
+"endif
 
 " 语言设置
-set langmenu=zh_CN.UTF-8
-language message zh_CN.UTF-8
-set helplang=cn
-"source $VIMRUNTIME/delmenu.vim
-"source $VIMRUNTIME/menu.vim
+"set langmenu=us_EN.UTF-8
+"set langmenu=zh_CN.UTF-8
+"language message us_EN.UTF-8
+
+source $VIMRUNTIME/delmenu.vim " 解决菜单乱码
+source $VIMRUNTIME/menu.vim    " 解决菜单乱码
+
+if has("win32") || has ("win64")
+    language messages  zh_CN.UTF-8 " 解决console信息乱码
+    set helplang=cn
+else
+    "language messages  us_EN.UTF-8 " 解决console信息乱码
+    set helplang=en 
+endif
 
 " indent 打开文件对应的插件和缩进
 " on 检查文件类型
@@ -162,16 +184,22 @@ map <F3> :NERDTreeToggle<CR>
 
 " airline
 set laststatus=2 
-let g:airline_powerline_fonts = 1                       " 使用powerline打过补丁的字体
-let g:airline#extensions#tabline#enabled = 1            " 开启tabline
-let g:airline#extensions#tabline#left_sep = '*'         " tabline中当前buffer两端的分隔字符
-let g:airline#extensions#tabline#left_alt_sep = '|'     " tabline中未激活buffer两端的分隔字符
-let g:airline#extensions#tabline#buffer_nr_show = 1     " tabline中buffer显示编号
+let g:airline_powerline_fonts                   = 1   " 使用powerline打过补丁的字体
+let g:airline#extensions#tabline#enabled        = 1   " 开启tabline
+"let g:airline#extensions#tabline#left_sep       = '>' " tabline中当前buffer两端的分隔字符
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline#extensions#tabline#buffer_nr_show = 1   " tabline中buffer显示编号
+let g:airline_detect_modified                   = 1   " modifie
 
 "ycm 配置
 set pumheight=10 "弹出菜单的高度，自己定义"
-"let g:ycm_server_python_interpreter='python' "使用python3
-"let g:ycm_python_binary_path = 'C:\OSGeo4W64\apps\Python37'
+if ( has("unix") )
+    let g:ycm_server_python_interpreter='python3' "使用python3
+    let g:ycm_python_binary_path = '/usr/bin/python3'
+endif
 let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py' " 当前目录没有 .ycm_extra_conf.py 时使用这个配置文件
 let g:ycm_confirm_extra_conf = 0 " 停止提示是否载入本地ycm_extra_conf文件 
 " 0 - 不记录上次的补全方式
@@ -189,8 +217,8 @@ let g:ycm_min_num_of_chars_for_completion=1 " 从第1个键入字符就开始罗
 let g:ycm_complete_in_comments = 1 " 在注释输入中也能补全
 let g:ycm_complete_in_strings = 1 " 在字符串输入中也能补全
 let g:ycm_collect_identifiers_from_comments_and_strings = 1 " 注释和字符串中的文字也会被收入补全
-let g:ycm_key_list_select_completion = ['=', '<Down>'] " 弹出列表时选择第1项的快捷键(默认为<TAB>和<Down>)
-let g:ycm_key_list_previous_completion = ['-', '<Up>'] " 弹出列表时选择前1项的快捷键(默认为<S-TAB>和<UP>)
+let g:ycm_key_list_select_completion = ['<TAB>', '<Down>'] " 弹出列表时选择第1项的快捷键(默认为<TAB>和<Down>)
+let g:ycm_key_list_previous_completion = ['<c-k>', '<Up>'] " 弹出列表时选择前1项的快捷键(默认为<S-TAB>和<UP>)
 " 主动补全, 默认为<C-Space>
 "let g:ycm_key_invoke_completion = '<C-Space>'
 " 停止显示补全列表(防止列表影响视野), 可以按<C-Space>重新弹出
@@ -220,7 +248,7 @@ let g:ycm_semantic_triggers =  {
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 "let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsExpandTrigger="<TAB>"
+let g:UltiSnipsExpandTrigger="<S-TAB>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
@@ -240,8 +268,9 @@ nnoremap <leader>il :IndentLinesToggle<CR> " 开关匹配线
 let g:rainbow_active = 1 
 
 " unite
-map <leader>u :Unite file_rec buffer file_mru<CR> 
+map <leader>u :Unite buffer file_rec -input=
 let g:unite_force_overwrite_statusline=0
+
 " ===== vim-plug 插件管理 ============================
 let $PLUG_DIR = expand("~/.vim/autoload") 
 if has("win32") || has ("win64")
@@ -270,4 +299,5 @@ Plug 'Yggdroot/indentLine'
 Plug 'luochen1990/rainbow'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/neomru.vim'
+Plug 'peterhoeg/vim-qml'
 call plug#end()
