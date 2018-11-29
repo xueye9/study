@@ -240,8 +240,8 @@ nnoremap <leader>il :IndentLinesToggle<CR> " 开关匹配线
 let g:rainbow_active = 1 
 
 " unite
-map <leader>u :Unite file_rec buffer file_mru<CR>
-
+map <leader>u :Unite file_rec buffer file_mru<CR> 
+let g:unite_force_overwrite_statusline=0
 " ===== vim-plug 插件管理 ============================
 let $PLUG_DIR = expand("~/.vim/autoload") 
 if has("win32") || has ("win64")
