@@ -272,6 +272,7 @@ let g:rainbow_active = 1
 
 " unite
 map <leader>u :Unite buffer file_rec -input=
+let g:unite_force_overwrite_statusline=0
 
 " ===== vim-plug 插件管理 ============================
 let $PLUG_DIR = expand("~/.vim/autoload") 
