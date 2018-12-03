@@ -199,6 +199,9 @@ set pumheight=10 "弹出菜单的高度，自己定义"
 if ( has("unix") )
     let g:ycm_server_python_interpreter='python3' "使用python3
     let g:ycm_python_binary_path = '/usr/bin/python3'
+else 
+    let g:ycm_server_python_interpreter='python3' "使用python3
+    let g:ycm_python_binary_path = '/usr/bin/python3'
 endif
 let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py' " 当前目录没有 .ycm_extra_conf.py 时使用这个配置文件
 let g:ycm_confirm_extra_conf = 0 " 停止提示是否载入本地ycm_extra_conf文件 
@@ -299,4 +302,5 @@ Plug 'luochen1990/rainbow'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/neomru.vim'
 Plug 'peterhoeg/vim-qml'
+Plug 'vim-scripts/a.vim'
 call plug#end()
