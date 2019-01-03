@@ -34,7 +34,7 @@ set incsearch   " 逐字高亮
 set nowrap
 set cindent shiftwidth=4 " c语言的缩进
 
-set foldmethod=indent
+set foldmethod=manual
 
 " 编辑vimrc之后自动加载
 autocmd! bufwritepost ~/.vimrc source ~/.vimrc
@@ -43,6 +43,7 @@ syntax on
 
 " 主题
 set background=dark 
+"set background=light 
 colorscheme solarized 
 
 if has("win32") || has ("win64")
@@ -200,8 +201,8 @@ if ( has("unix") )
     let g:ycm_server_python_interpreter='python3' "使用python3
     let g:ycm_python_binary_path = '/usr/bin/python3'
 else 
-    let g:ycm_server_python_interpreter='python3' "使用python3
-    let g:ycm_python_binary_path = '/usr/bin/python3'
+    let g:ycm_server_python_interpreter='python' "使用python3
+    let g:ycm_python_binary_path = 'C:/OSGeo4W64/apps/Python37/python.exe'
 endif
 let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py' " 当前目录没有 .ycm_extra_conf.py 时使用这个配置文件
 let g:ycm_confirm_extra_conf = 0 " 停止提示是否载入本地ycm_extra_conf文件 
