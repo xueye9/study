@@ -27,8 +27,10 @@ limitations under the License. See accompanying LICENSE file.
     </property> 
     <property>
         <name>hadoop.tmp.dir</name>
-        <value>/home/hadoop3/data/tmp</value>
+        <value>/home/hadoop3/tmp</value>
     </property>
+
+    <!-- httpfs 设置-->
     <property>
         <name>hadoop.proxyuser.hadoop3.hosts</name>
         <value>*</value>

@@ -1,38 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="DEBUG">
+<!--status log4j2 自身自身的日志级别-->
+<!--monitorInterval 每隔多少秒读取该配置文件,修改配置文件不用重启服务-->
+<Configuration status="DEBUG" monitorInterval="600">
     <Properties>
         <Property name="log-path">${mvn.log.path}</Property>
         <property name="file_size" value="5MB" />
         <property name="file_encode" value="UTF-8" />
         <property name="file_max_count" value="10" />
     </Properties>
+
+    <!-- 定义数组设备 -->
     <Appenders>
         <Console name="console-log" target="SYSTEM_OUT">
             <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch） -->
             <ThresholdFilter level="trace" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"/>
-        </Console>
-        <RollingFile name="trace-log" fileName="${log-path}/gisstore-agent-trace.log"
-                     filePattern="${log-path}/gisstore-agent-trace-%d{yyyy-MM-dd}.log">
-            <PatternLayout>
-                <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern>
-            </PatternLayout>
-            <Policies>
-                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
-            </Policies>
-        </RollingFile>
+        </Console> 
+        <RollingRandomAccessFile name="trace-log"  
+            fileName="${log-path}/filestore-trace.log"  
+            filePattern="${log-path}/$${date:yyyy-MM}/filestore-trace-%d{yyyy-MM-dd HH-mm}-%i.log">  
+            <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n" />  
 
-        <RollingFile name="error-log" fileName="${log-path}/camo-agent-error.log"
-                     filePattern="${log-path}/camo-info-error-%d{yyyy-MM-dd}.log">
-            <PatternLayout>
-                <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern>
-            </PatternLayout>
-            <Policies>
-                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
-            </Policies>
-        </RollingFile>
+            <Policies>  
+                <!--和filePattern 结合使用按天(or 时 分秒 生成日志文件)-->
+                <TimeBasedTriggeringPolicy interval="1" />  
+
+                <!--最大文件体积-->
+                <SizeBasedTriggeringPolicy size="${file_size}" />  
+            </Policies>  
+
+            <!--最多保存文件个数-->
+            <DefaultRolloverStrategy max="20" />  
+        </RollingRandomAccessFile>  
+        <RollingRandomAccessFile name="error-log"  
+            fileName="${log-path}/filestore-error.log"  
+            filePattern="${log-path}/$${date:yyyy-MM}/filestore-error-%d{yyyy-MM-dd HH-mm}-%i.log">  
+            <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n" />  
+            <Policies>  
+                <TimeBasedTriggeringPolicy interval="1" />  
+                <SizeBasedTriggeringPolicy size="${file_size}" />  
+            </Policies>  
+            <DefaultRolloverStrategy max="20" />  
+        </RollingRandomAccessFile>  
+
+        <!--<RollingFile name="trace-log" fileName="${log-path}/gisstore-agent-trace.log"-->
+                     <!--filePattern="${log-path}/gisstore-agent-trace-%d{yyyy-MM-dd}.log">-->
+            <!--<PatternLayout>-->
+                <!--<pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern>-->
+            <!--</PatternLayout>-->
+            <!--<Policies>-->
+                <!--<TimeBasedTriggeringPolicy interval="1" modulate="true"/>-->
+            <!--</Policies>-->
+        <!--</RollingFile>--> 
+        <!--<RollingFile name="error-log" fileName="${log-path}/camo-agent-error.log"-->
+                     <!--filePattern="${log-path}/camo-info-error-%d{yyyy-MM-dd}.log">-->
+            <!--<PatternLayout>-->
+                <!--<pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern>-->
+            <!--</PatternLayout>-->
+            <!--<Policies>-->
+                <!--<TimeBasedTriggeringPolicy interval="1" modulate="true"/>-->
+            <!--</Policies>-->
+        <!--</RollingFile>-->
     </Appenders>
     <Loggers>
+        <Root level="info" additivity="false">
+            <AppenderRef ref="console-log" level="info"/>
+            <appender-ref ref="trace-log" level="info"/>
+            <appender-ref ref="error-log" level="error"/>
+        </Root>
+
+        <!--name 以 . 分隔,会继承上层的属性-->
+        <!--
+        additivity开启的话，由于这个logger也是满足root的，所以会被打印两遍。
+        不过root logger 的level是error，为什么Bar 里面的trace信息也被打印两遍呢
+        -->
         <Logger name="com.jd.x.gisstore" level="trace" additivity="false">
             <appender-ref ref="trace-log" level="${mvn.log.jd.level}"/>
             <appender-ref ref="error-log" level="error"/>
@@ -44,14 +85,6 @@
             <appender-ref ref="error-log" level="error"/>
             <appender-ref ref="console-log" level="error"/>
         </Logger>
-
-        <Logger name=" org.apache.hadoop" level="error" additivity="false">
-            <appender-ref ref="trace-log" level="error"/>
-            <appender-ref ref="error-log" level="error"/>
-            <appender-ref ref="console-log" level="error"/>
-        </Logger>
-
-
 
         <Logger name="org.springframework.http" level="error" additivity="false">
             <appender-ref ref="trace-log" level="error"/>
@@ -65,10 +98,5 @@
             <appender-ref ref="console-log" level="error"/>
         </Logger>
 
-        <Root level="info" additivity="false">
-            <AppenderRef ref="console-log" level="info"/>
-            <appender-ref ref="trace-log" level="info"/>
-            <appender-ref ref="error-log" level="error"/>
-        </Root>
     </Loggers>
 </Configuration>
