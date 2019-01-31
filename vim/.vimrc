@@ -275,6 +275,10 @@ let      g:rainbow_active = 1
 map      <leader>u :Unite buffer file_rec -input=
 let      g:unite_force_overwrite_statusline=0
 
+"indentLine
+"let g:indentLine_char='┆'
+"let g:indentLine_enabled = 1
+
 " ===== vim-plug 插件管理 ============================
 let $PLUG_DIR = expand("~/.vim/autoload") 
 if has("win32") || has ("win64")
@@ -299,7 +303,8 @@ Plug 'vim-scripts/NSIS-syntax-highlighting'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-easy-align'
-Plug 'Yggdroot/indentLine'
+" indentline 插件会造成json文件中的双引号被隐藏的问题
+"Plug 'Yggdroot/indentLine'
 Plug 'luochen1990/rainbow'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/neomru.vim'
