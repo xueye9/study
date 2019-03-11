@@ -32,6 +32,7 @@ set incsearch   " 逐字高亮
 
 " 不要折行
 set nowrap
+set textwidth=0
 set cindent shiftwidth=4 " c语言的缩进
 
 set foldmethod=manual
