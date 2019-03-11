@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--status log4j2 自身自身的日志级别-->
+<!--monitorInterval 每隔多少秒读取该配置文件,修改配置文件不用重启服务-->
+<Configuration version="0">
+    <Loggers>
+        <!--<Logger name="xdata" />-->
+        <Logger name="test" /> 
+    </Loggers>
+</Configuration>
