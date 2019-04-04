@@ -102,3 +102,18 @@ $make install
 2. 在windows下将编译的 [module].dll 改名问 _[module].pyd 拷贝到 python安装目录下的 DLLs 目录下,如果有依赖库一起拷贝到该目录(不用修改
  依赖库的后缀名),将生成的 [module].py开包的python安装目录下的Lib目录下,安装完成
  
+###Linux
+    在centos7下做的实验(编译器版本gcc4.8)
+    
+####编译库
+    使用cmake生成 Makefile 文件,进行编译,swig命令和windows下执行的类似,连接的python库和Python.h头文件和机器安装的python相关.
+    
+####安装库
+    将生成的 module.py 文件拷贝到 /usr/lib64/python2.7/ 目录下(我的系统是64位的), 将生成的 lib[module].so 文件使用 
+    ln -sf lib[module].so _[module].so 生成软连接,然后在此文件夹下 
+    $python  
+    >>>import [module]   
+    如果不报错说明已经安装成功了
+    
+    
+    
