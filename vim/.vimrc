@@ -145,6 +145,11 @@ nnoremap  <leader>m :only<CR> " 当前窗口最大化
 
 map <F2> @a " 自己定义的键盘映射按下F5建执行录制好的名字为a的宏
 
+let @z="^df:^xggwvf/f/f/y^hp$x==j" " es 格式化为可删除curl命令
+let @x="jVj%jjjjd"  " es 删除多行
+let @c="^df:^x2ggwvf/f/f/y^hp$x==j"
+let @v="dfBdfBggwvf?y^hpggf?v$y$p^f?x==j"
+
 " ======== 各种插件配置,包含插件相应的快捷键 ==================
 " vimwiki
 source ~/.vim/vimwiki.conf 
@@ -224,6 +229,8 @@ let g:ycm_complete_in_strings                           = 1 " 在字符串输入
 let g:ycm_collect_identifiers_from_comments_and_strings = 1 " 注释和字符串中的文字也会被收入补全
 let g:ycm_key_list_select_completion                    = ['<TAB>', '<Down>'] " 弹出列表时选择第1项的快捷键(默认为<TAB>和<Down>)
 let g:ycm_key_list_previous_completion                  = ['<c-k>', '<Up>'] " 弹出列表时选择前1项的快捷键(默认为<S-TAB>和<UP>)
+let g:ycm_add_preview_to_completeopt                    = 1 " 默认开启提示框 
+let g:ycm_autoclose_preview_window_after_completion     = 1 " 完成的时候关闭提示框
 " 主动补全, 默认为<C-Space>
 "let g:ycm_key_invoke_completion = '<C-Space>'
 " 停止显示补全列表(防止列表影响视野), 可以按<C-Space>重新弹出
@@ -277,8 +284,8 @@ map      <leader>u :Unite buffer file_rec -input=
 let      g:unite_force_overwrite_statusline=0
 
 "indentLine
-"let g:indentLine_char='┆'
-"let g:indentLine_enabled = 1
+let g:indentLine_char='┆'
+let g:indentLine_enabled = 1
 
 " ===== vim-plug 插件管理 ============================
 let $PLUG_DIR = expand("~/.vim/autoload") 
@@ -305,7 +312,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/vim-easy-align'
 " indentline 插件会造成json文件中的双引号被隐藏的问题
-"Plug 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
 Plug 'luochen1990/rainbow'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/neomru.vim'
