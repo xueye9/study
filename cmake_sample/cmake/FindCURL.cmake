@@ -35,8 +35,7 @@ else(CURL_INCLUDE_DIRS AND CURL_LIBRARIES)
     else(CURL_PREFIX)
         find_path(_CURL_INCLUDE_DIR curl.h
             PATH_SUFFIXES "curl")
-        find_library(_CURL_LIBRARY libcurl
-            curl)
+        find_library(_CURL_LIBRARY curl)
     endif(CURL_PREFIX)
     if(_CURL_INCLUDE_DIR AND _CURL_LIBRARY)
         set(CURL_FOUND true)

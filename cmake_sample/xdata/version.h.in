@@ -1,4 +1,4 @@
-﻿/**********************************************************************
+/**********************************************************************
  *
  * GEOS - Geometry Engine Open Source
  * http://geos.osgeo.org
@@ -11,8 +11,7 @@
  * See the COPYING file for more information.
  *
  **********************************************************************/
-#ifndef JD_X_GISSTORE_CPP_SDK_XDATA_VERSION_H_INCLUDED
-#define JD_X_GISSTORE_CPP_SDK_XDATA_VERSION_H_INCLUDED
+#pragma once
 
 #ifndef XDATA_VERSION_MAJOR
 #define XDATA_VERSION_MAJOR @PROJECT_VERSION_MAJOR@
@@ -30,13 +29,11 @@
 #define XDATA_VERSION_DATE @PROJECT_VERSION_TWEAK@
 #endif
 
-#ifndef XDATA_VERSION_PROJECT
-#define XDATA_VERSION_PROJECT "@VERSION_PROJECT@"
+#ifndef XDATA_BUILD_PROJECT
+#define XDATA_BUILD_PROJECT "@BUILD_PROJECT@"
 #endif
 
 
 #ifndef XDATA_VERSION
-#define XDATA_VERSION "@VERSION@"
+#define XDATA_VERSION "@XDATA_VERSION@"
 #endif
-
-#endif // JD_X_GISSTORE_CPP_SDK_VERSION_H_INCLUDED
