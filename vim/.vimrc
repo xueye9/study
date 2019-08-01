@@ -109,7 +109,8 @@ endif
 set pastetoggle=<F9>
 
 "自动补齐{ [ ( <
-inoremap { {}<esc>i 
+inoremap { {}<esc>i
+"inoremap { {}<esc>i
 inoremap ( ()<esc>i
 inoremap [ []<esc>i
 inoremap ' ''<esc>i
@@ -144,6 +145,7 @@ nnoremap <leader>wl <C-w>l<CR>
 nnoremap  <leader>m :only<CR> " 当前窗口最大化
 
 map <F2> @a " 自己定义的键盘映射按下F5建执行录制好的名字为a的宏
+nnoremap <leader>dl :Calendar<cr> " 打开日历控
 
 let @z="^df:^xggwvf/f/f/y^hp$x==j" " es 格式化为可删除curl命令
 let @x="jVj%jjjjd"  " es 删除多行
@@ -318,4 +320,5 @@ Plug 'Shougo/unite.vim'
 Plug 'Shougo/neomru.vim'
 Plug 'peterhoeg/vim-qml'
 Plug 'vim-scripts/a.vim'
+Plug 'mattn/calendar-vim'
 call plug#end()
