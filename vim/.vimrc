@@ -191,6 +191,8 @@ map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 map <F3> :NERDTreeMirror<CR>
 map <F3> :NERDTreeToggle<CR>
 
+"map <F3> :VimFiler -winwidth=50 -simple -fnamewidth=100 -buffer-name='left' -split<CR>
+"map <F4> :VimFiler -toggle -buffer-name='left'<CR>
 " airline
 set laststatus=2 
 let g:airline_powerline_fonts                   = 1   " 使用powerline打过补丁的字体
@@ -308,6 +310,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'altercation/vim-colors-solarized'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
+Plug 'Shougo/vimfiler.vim'
 Plug 'w0rp/ale'
 Plug 'vim-scripts/NSIS-syntax-highlighting'
 Plug 'SirVer/ultisnips'
