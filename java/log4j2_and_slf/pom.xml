@@ -20,7 +20,7 @@
         <!--<CodeCacheSize>512m</CodeCacheSize>-->
         <!--<hadoop.version>2.7.4</hadoop.version>-->
         <!--<es.version>5.3.3</es.version>-->
-        <spring.version>4.3.11.RELEASE</spring.version>
+        <spring.version>5.2.20.RELEASE</spring.version>
         <!--<spring.version>4.3.11.RELEASE</spring.version>-->
         <!-- <geotools.version>15.1</geotools.version>-->
         <!--<geotools.version>10.8</geotools.version>-->
